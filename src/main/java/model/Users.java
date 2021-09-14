@@ -1,36 +1,28 @@
 package model;
 
 import lombok.Data;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Data
-public class Users {
+public abstract class Users implements Serializable {
 
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true)
+    private String email;
+
     private String name;
 
     private String lastname;
 
-    private String Login;
-
     public Users() {
     }
-
-
-
-
-//    @Override
-//    public String toString() {
-//        return "Users [id=" + id + ", name=" + name + ", agenda="
-//                + agenda.getName() + "]";
-//    }
 
 
 }
