@@ -25,7 +25,7 @@ public class UserRest {
 
     //    @GET
 //    @Path("/{userEmail}")
-//    public Optional<Users> getUserByEmail(@PathParam("userEmail") Long userEmail)  {
+//    public Optional<Users> getUserByEmail(@PathParam("userEmail") String userEmail)  {
 //        return userService.getByEmail(userEmail);
 //    }
     @GET
