@@ -1,0 +1,20 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="../templates/templateClient.xhtml">
+    <ui:define name="content">
+    <div class="p-formgroup-inline">
+        <div class="p-field">
+            <label for="firstname" class="p-sr-only">Firstname</label>
+            <p:inputText id="firstname" type="text" placeholder="Firstname" />
+        </div>
+        <div class="p-field">
+            <label for="lastname" class="p-sr-only">Lastname</label>
+            <p:inputText id="lastname" type="text" placeholder="Lastname" />
+        </div>
+            <p:commandButton type="button" label="Submit" styleClass="ui-button" value="Send"/>
+    </div>
+    </ui:define>
+</ui:composition>
