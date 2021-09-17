@@ -1,4 +1,5 @@
 package model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import javax.persistence.*;
@@ -11,6 +12,7 @@ public class Prof extends Users {
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH})
     @JoinTable(name = "User_Creneau")
     @EqualsAndHashCode.Exclude
+    @JsonIgnore
     private Set<Creneau> creneaux  = new HashSet<>();
 
     @OneToMany(mappedBy = "prof", cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REMOVE})

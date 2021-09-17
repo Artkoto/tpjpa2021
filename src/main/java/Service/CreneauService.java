@@ -24,7 +24,6 @@ public class CreneauService {
     
     public void  deleteCreneau(final Long id){
         if (creneauDao.existsById(id)) {
-
             for (Rdv rdv : rdvDao.findByCrenel(id)){
                 rdvService.deleteRdv(rdv.getId());
             }

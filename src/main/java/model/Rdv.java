@@ -1,5 +1,6 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -13,10 +14,14 @@ public class Rdv implements Serializable {
     private Long id;
     private String title;
     @ManyToOne
+    @JsonIgnore
     Client client;
+
     @ManyToOne
+    @JsonIgnore
     Prof prof;
     @ManyToOne
+    @JsonIgnore
     Creneau creneau;
 
 }

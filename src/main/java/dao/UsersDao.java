@@ -24,6 +24,10 @@ public class UsersDao extends AbstractJpaDao<Long, Users> {
     }
 
     public List<Users> findByLastname(String s) {
-        return entityManager.createQuery("select e from Users as e where e.lastname =='" +s+ "'", Users.class).getResultList();
+        return entityManager.createQuery("select e from Users as e where e.lastname ='" +s+ "'", Users.class).getResultList();
+    }
+
+    public List<Users> findByEmail(String s) {
+        return entityManager.createQuery("select e from Users as e where e.email ='" +s+ "'", Users.class).getResultList();
     }
 }

@@ -38,7 +38,9 @@ public class UserService {
     public Iterable<Users> getUsersByLastname(String lastname)   {
         return usersDao.findByLastname(lastname);
     }
-
+    public Iterable<Users> getUsersByEmail(String email)   {
+        return usersDao.findByEmail(email);
+    }
 
     public void  deleteUser(final Long id){
         if (usersDao.existsById(id)) {
@@ -64,4 +66,6 @@ public class UserService {
         }
         return user;
     }
+
+
 }
