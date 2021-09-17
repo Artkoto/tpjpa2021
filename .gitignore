@@ -49,6 +49,7 @@ nb-configuration.xml
 
 # OS
 .DS_Store
+.factorypath
 
 # Misc
 *.swp

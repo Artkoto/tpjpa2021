@@ -1,19 +1,13 @@
 package rest;
 
 import Service.CreneauService;
-import Service.UserService;
-import io.swagger.v3.oas.annotations.Parameter;
+
 import model.Creneau;
-import model.Users;
-
 import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import java.net.URISyntaxException;
-import java.util.Optional;
 
-@Path("/slots")
-@Produces({"application/json", "application/xml"})
+
+@Path("/slot")
+@Produces({"application/json"})
 public class CreneauRest {
     CreneauService creneauService = new CreneauService();
 
@@ -23,10 +17,9 @@ public class CreneauRest {
      * @return
      */
     @GET
-    @Path("/{Id}")
-    @Produces({"application/json"})
-    public Optional<Creneau> getCreneau(@PathParam("Id") Long creneauId) {
-        return creneauService.getCreneau(creneauId);
+    @Path("/id={Id}")
+    public Creneau getCreneau(@PathParam("Id") Long creneauId) {
+        return creneauService.getCreneau(creneauId).get();
     }
 
     /**
@@ -35,23 +28,20 @@ public class CreneauRest {
      */
     @GET
     @Path("/all")
-    @Produces({"application/json"})
     public Iterable<Creneau> getAllCreneaux() {
         return creneauService.getCreneaux();
     }
 
     @POST
-    @Path("/{creneau}")
+    @Path("/add")
     @Consumes({"application/json"})
-    @Produces({"application/json"})
-    public Creneau addCreneau( Creneau creneau) throws URISyntaxException {
+    public Creneau addCreneau( Creneau creneau)  {
         return creneauService.saveCreneau(creneau);
     }
 
-    @PATCH
-    @Path("/{creneauId}/creneau/{creneau}/")
+    @PUT
+    @Path("/{creneauId}/update")
     @Consumes({"application/json"})
-    @Produces({"application/json"})
     public Creneau modifyCreneau(@PathParam("creneauId") Long id, Creneau creneau) {
         return creneauService.modifyCreneau(id, creneau);
     }
