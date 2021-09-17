@@ -1,5 +1,6 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -23,9 +24,11 @@ public class Creneau implements Serializable {
 
     @ManyToMany(mappedBy = "creneaux", cascade = {CascadeType.PERSIST, CascadeType.DETACH})
     @EqualsAndHashCode.Exclude
+    @JsonIgnore
     private Set<Prof> profs = new HashSet<>();
 
     @OneToMany( mappedBy = "creneau", cascade = {CascadeType.ALL})
     @EqualsAndHashCode.Exclude
+    @JsonIgnore
     private Set<Rdv> rdv = new HashSet<>();
 }

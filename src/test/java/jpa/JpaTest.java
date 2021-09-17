@@ -3,6 +3,7 @@ import Service.CreneauService;
 import Service.RdvService;
 import Service.UserService;
 
+import dao.UsersDao;
 import model.Client;
 
 import model.Creneau;
@@ -22,23 +23,25 @@ public class JpaTest {
         CreneauService creneauService =new CreneauService();
         RdvService rdvService = new RdvService();
 
+        UsersDao userDAO = new UsersDao();
+
         try {
             //Alimentation de la bdd
             //Users (PROF, CLIENT, CRENEAU, RDV)
             Prof user01 = new Prof();
                 user01.setName("Koa");
                 user01.setLastname("Arnaud");
-                user01.setEmail("arnaud@gmail.com");
+                user01.setEmail("test1@gmail.com");
 
             Client user02 = new Client();
                 user02.setName("Yao");
                 user02.setLastname("Parfait");
-                user02.setEmail("yao@istic.fr");
+                user02.setEmail("test2@istic.fr");
 
             Prof user03 = new Prof();
                 user03.setName("Konan");
                 user03.setLastname("Ilan");
-                user03.setEmail("papou@gmail.com");
+                user03.setEmail("test3@gmail.com");
 
 
             Prof user04 = new Prof();
@@ -93,6 +96,8 @@ public class JpaTest {
 
             userService.modifyUser(user02.getId(), user04);
 
+          System.out.println(" getRdvs  : " + rdvService.getRdvs());
+        //    System.out.println(" getUser test : " + userDAO.findOne(user01.getId()));
         } catch (Exception e) {
             e.printStackTrace();
         }

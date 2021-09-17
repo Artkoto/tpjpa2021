@@ -16,9 +16,7 @@ public abstract class Users implements Serializable {
 
     @Column(unique = true)
     private String email;
-
     private String name;
-
     private String lastname;
 
     public Users() {
