@@ -1,0 +1,19 @@
+.footer{
+    !important;
+    padding: 10px 20px;
+    background-color: dimgray;
+    color: white;
+}
+
+.contentHomePage{
+    !important;
+    align-self: center;
+    vertical-align: baseline;
+    background-color: cadetblue;
+    align-content: center;
+    height: 55em;
+}
+
+#indexTile{
+    color: cadetblue;
+}
