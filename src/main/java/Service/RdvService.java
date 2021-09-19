@@ -1,10 +1,11 @@
 package Service;
 
 import dao.RdvDao;
+import lombok.Data;
 import model.Rdv;
 
 import java.util.Optional;
-
+@Data
 public class RdvService {
 
     private RdvDao rdvDao = new RdvDao();
@@ -31,7 +32,12 @@ public class RdvService {
     }
     public Rdv modifyRdv(final Long id, Rdv rdv){
         if (rdvDao.existsById(id)) {
-            return rdvDao.save(rdv);
+            Rdv rdvTOModify = getRdv(id).get();
+            rdvTOModify.setClient(rdv.getClient());
+            rdvTOModify.setProf(rdv.getProf());
+            rdvTOModify.setCreneau(rdv.getCreneau());
+            rdvTOModify.setTitle(rdv.getTitle());
+            return rdvDao.update(rdvTOModify);
         }
         return rdv;
     }
