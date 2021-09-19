@@ -36,7 +36,12 @@ public class CreneauService {
     }
     public Creneau modifyCreneau(final Long id, Creneau creneau){
         if (creneauDao.existsById(id)) {
-            return creneauDao.save(creneau);
+            Creneau creneauTOModify = getCreneau(id).get();
+            creneauTOModify.setDebut(creneau.getDebut());
+            creneauTOModify.setFin(creneau.getFin());
+            creneauTOModify.setProfs(creneau.getProfs());
+            creneauTOModify.setRdv(creneau.getRdv());
+            return creneauDao.update(creneauTOModify);
         }
         return creneau;
     }    
