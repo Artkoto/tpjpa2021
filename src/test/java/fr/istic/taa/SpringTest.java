@@ -1,29 +1,47 @@
-package jpa;
-import Service.CreneauService;
-import Service.RdvService;
-import Service.UserService;
+package fr.istic.taa;
+import fr.istic.taa.model.Client;
+import fr.istic.taa.service.CreneauService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import fr.istic.taa.service.RdvService;
+import fr.istic.taa.service.UserService;
 
-import dao.UsersDao;
-import model.Client;
+import fr.istic.taa.repository.UsersRepository;
 
-import model.Creneau;
-import model.Prof;
-import model.Rdv;
+import fr.istic.taa.model.Creneau;
+import fr.istic.taa.model.Prof;
+import fr.istic.taa.model.Rdv;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.web.servlet.MockMvc;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.text.SimpleDateFormat;
 import java.util.HashSet;
 
-public class JpaTest {
+@SpringBootTest
+@AutoConfigureMockMvc
+public class SpringTest {
+    @Autowired
+    public MockMvc mockMvc;
+    @Autowired
+    UsersRepository userDAO;
+    @Autowired
+    UserService userService;
+    @Autowired
+    CreneauService creneauService;
+    @Autowired
+    RdvService rdvService ;
 
-    /**
-     * @param args
-     */
-    public static void main(String[] args) {
-        UserService userService = new UserService();
-        CreneauService creneauService =new CreneauService();
-        RdvService rdvService = new RdvService();
 
-        UsersDao userDAO = new UsersDao();
+
+    @BeforeEach
+    void init() {
 
         try {
             //Alimentation de la bdd
@@ -80,28 +98,35 @@ public class JpaTest {
                 rdv02.setProf(user03);
                 rdv02.setClient(user02);
 
-            userService.saveUser(user01);
-            userService.saveUser(user02);
-            userService.saveUser(user03);
+
             creneauService.saveCreneau(creneau01);
             creneauService.saveCreneau(creneau02);
             creneauService.saveCreneau(creneau03);
+            userService.saveUser(user01);
+            userService.saveUser(user02);
+            userService.saveUser(user03);
             rdvService.saveRdv(rdv01);
             rdvService.saveRdv(rdv02);
 
 
-          /*  userService.deleteUser(user01.getId());
-            userService.deleteUser(user02.getId());
-            userService.deleteUser(user03.getId());*/
+//            userService.deleteUser(user01.getId());
+ //           userService.deleteUser(user02.getId());
+//            userService.deleteUser(user03.getId());
+//            rdvService.deleteRdv(rdv01.getId());
 
-            userService.modifyUser(user02.getId(), user04);
 
-          System.out.println(" getRdvs  : " + rdvService.getRdvs());
-        //    System.out.println(" getUser test : " + userDAO.findOne(user01.getId()));
+             userService.modifyUser(user01.getId(), user04);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
 
+    @Test
+    void contextLoads()  throws Exception {
+        mockMvc.perform(get("/user/all"))
+                .andExpect(status().isOk()).andExpect(jsonPath("$[1].name", is("Yao")));
+    }
 }
+

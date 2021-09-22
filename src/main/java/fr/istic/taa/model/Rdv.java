@@ -1,4 +1,4 @@
-package model;
+package fr.istic.taa.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
@@ -20,6 +20,7 @@ public class Rdv implements Serializable {
     @ManyToOne
     @JsonIgnore
     Prof prof;
+
     @ManyToOne
     @JsonIgnore
     Creneau creneau;
