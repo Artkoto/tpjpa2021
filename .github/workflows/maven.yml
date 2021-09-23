@@ -5,9 +5,9 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ master ]
+    branches: [ Refactoring_to_Spring_Boot(do_not_use) ]
   pull_request:
-    branches: [ master ]
+    branches: [ Refactoring_to_Spring_Boot(do_not_use) ]
 
 jobs:
   build:
