@@ -1,21 +1,22 @@
-package model;
+package sample.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
-import lombok.EqualsAndHashCode;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 @Entity
 @DiscriminatorValue("Prof")
+@Table(name = "users")
 @Data
-public class Prof extends Users {
+public class Prof extends User {
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH})
     @JoinTable(name = "User_Creneau")
-    @EqualsAndHashCode.Exclude
     @JsonIgnore
     private Set<Creneau> creneaux  = new HashSet<>();
 
     @OneToMany(mappedBy = "prof", cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REMOVE})
-    @EqualsAndHashCode.Exclude
+    @JsonIgnore
     private Set<Rdv> rdv  = new HashSet<>();;
 }
