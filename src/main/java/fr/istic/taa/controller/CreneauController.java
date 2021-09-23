@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-@CrossOrigin(origins = "localhost:4200")
+@CrossOrigin
 @RestController
 @RequestMapping("/slot")
 public class CreneauController {
