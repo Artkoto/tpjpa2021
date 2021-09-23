@@ -11,10 +11,10 @@ import java.util.Optional;
 @Repository
 public interface UsersRepository extends JpaRepository<Users, Long> {
 
-    @Query("SELECT '*' FROM Prof ")
+    @Query("SELECT e FROM Prof  as e")
     List<Users> findAllProfs() ;
 
-    @Query("SELECT '*' FROM Client ")
+    @Query("SELECT e FROM Client as e")
     List<Users> findAllClients();
 
     @Query("select e from Client as e where e.id=?1  ")
