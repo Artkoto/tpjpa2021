@@ -1,7 +1,7 @@
 package sample.service;
 
+import sample.dao.*;
 import sample.domain.*;
-import sample.repositories.*;
 
 import java.util.List;
 import java.util.Optional;

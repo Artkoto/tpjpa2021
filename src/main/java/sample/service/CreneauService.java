@@ -1,7 +1,8 @@
 package sample.service;
 
+import sample.dao.*;
 import sample.domain.*;
-import sample.repositories.*;
+
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

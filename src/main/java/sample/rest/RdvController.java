@@ -1,4 +1,4 @@
-package sample.controller;
+package sample.rest;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +52,7 @@ public class RdvController {
 	   * GET /get-all  --> Return the list of rdvs
 	   *rdvDao
 	   */
-	  @DeleteMapping("/rdvs")
+	  @GetMapping("/rdvs")
 	  @ResponseBody
 	  public Iterable<Rdv> getAllRdv() {
 	    

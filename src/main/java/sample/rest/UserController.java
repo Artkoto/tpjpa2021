@@ -1,4 +1,4 @@
-package sample.controller;
+package sample.rest;
 
 
 
@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
 import sample.service.UserService;
 import sample.domain.Client;
 import sample.domain.Prof;
@@ -21,7 +23,7 @@ import org.slf4j.LoggerFactory;
 
 import org.slf4j.Logger;
 
-@Controller
+@RestController
 @RequestMapping("/user")
 public class UserController {
 
@@ -30,31 +32,31 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/get-by-id/{userId}")
+    @GetMapping("/get-by-id/{userId}")
 	@ResponseBody
     public User getPetById(@PathVariable Long userId)  {
             return userService.getUser(userId).get();
     }
 
-    @RequestMapping("/get-by-email/{userEmail}")
+    @GetMapping("/get-by-email/{userEmail}")
     @ResponseBody
     public Iterable<User> getUserByEmail(@PathVariable String userEmail)  {
         return userService.getUsersByEmail(userEmail);
     }
 
-	@RequestMapping("/get-by-name/{userName}")
+	@GetMapping("/get-by-name/{userName}")
 	@ResponseBody
     public Iterable<User> getUserByName(@PathVariable String userName)  {
         return userService.getUsersByName(userName);
     }
 
-	@RequestMapping("/get-by-lastname/{userLastname}")
+	@GetMapping("/get-by-lastname/{userLastname}")
 	@ResponseBody
     public Iterable<User> getUserByLastname(@PathVariable String userLastname){
         return userService.getUsersByLastname(userLastname);
     }
 
-	@RequestMapping("/users")
+	@GetMapping("/users")
 	@ResponseBody
     public Iterable<User> getAllUsers() {
         return userService.getUsers();

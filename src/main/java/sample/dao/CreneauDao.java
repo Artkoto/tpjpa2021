@@ -1,4 +1,4 @@
-package sample.repositories ;
+package sample.dao ;
 
 import sample.domain.Creneau;
 

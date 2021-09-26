@@ -2,8 +2,8 @@ package sample.service;
 
 
 import lombok.Data;
+import sample.dao.RdvDao;
 import sample.domain.Rdv;
-import sample.repositories.RdvDao;
 
 import java.util.Optional;
 
