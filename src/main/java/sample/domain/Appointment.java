@@ -9,9 +9,9 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "rdv")
+@Table(name = "Appointment")
 @Data
-public class Rdv implements Serializable {
+public class Appointment implements Serializable {
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Long id;

@@ -19,13 +19,13 @@ public class Client extends User {
     
     @OneToMany(mappedBy = "client")
     @JsonIgnore
-    private Set<Rdv> rdv = new HashSet<>();
+    private Set<Appointment> rdv = new HashSet<>();
 
-    public Set<Rdv> getRdv() {
+    public Set<Appointment> getRdv() {
         return rdv;
     }
 
-    public void setRdv(Set<Rdv> rdv) {
+    public void setRdv(Set<Appointment> rdv) {
         this.rdv = rdv;
     }
 }

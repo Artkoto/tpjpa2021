@@ -2,8 +2,8 @@ package sample.service;
 
 
 import lombok.Data;
-import sample.dao.RdvDao;
-import sample.domain.Rdv;
+import sample.dao.AppointmentDao;
+import sample.domain.Appointment;
 
 import java.util.Optional;
 
@@ -11,38 +11,34 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 @Service
 @Data
-public class RdvService {
+public class AppointmentService {
 
     @Autowired
-    private RdvDao rdvDao; 
+    private AppointmentDao rdvDao; 
 
-    public Optional<Rdv> getRdv(final Long id){
+    public Optional<Appointment> getAppointment(final Long id){
         return rdvDao.findById(id);
     }
 
-    public Iterable<Rdv> getRdvs()   {
+    public Iterable<Appointment> getAppointments()   {
         return rdvDao.findAll();
     }
-    public Rdv getRdvByTitle(String title)   {
+    public Appointment getAppointmentByTitle(String title)   {
         return rdvDao.findByTitle(title);
     }
 
-    public Rdv getByTitle(String title)   {
-        return rdvDao.findByTitle(title);
-    }
-
-    public void  deleteRdv(final Long id){
+    public void  deleteAppointment(final Long id){
         if (rdvDao.existsById(id)) {
             rdvDao.deleteById(id);
         }
     }
 
-    public Rdv saveRdv(Rdv rdv){
+    public Appointment saveAppointment(Appointment rdv){
         return rdvDao.save(rdv);
     }
-    public Rdv modifyRdv(final Long id, Rdv rdv){
+    public Appointment modifyAppointment(final Long id, Appointment rdv){
         if (rdvDao.existsById(id)) {
-            Rdv rdvTOModify = getRdv(id).get();
+            Appointment rdvTOModify = getAppointment(id).get();
             rdvTOModify.setClient(rdv.getClient());
             rdvTOModify.setProf(rdv.getProf());
             rdvTOModify.setCreneau(rdv.getCreneau());

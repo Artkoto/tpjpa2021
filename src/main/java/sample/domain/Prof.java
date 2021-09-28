@@ -18,5 +18,5 @@ public class Prof extends User {
 
     @OneToMany(mappedBy = "prof", cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REMOVE})
     @JsonIgnore
-    private Set<Rdv> rdv  = new HashSet<>();;
+    private Set<Appointment> rdv  = new HashSet<>();;
 }

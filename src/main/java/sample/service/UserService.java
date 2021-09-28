@@ -3,7 +3,6 @@ package sample.service;
 import sample.dao.*;
 import sample.domain.*;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +18,10 @@ public class UserService {
     private UserDao  usersDao ;
 
     @Autowired
-    private RdvDao rdvDao ;
+    private AppointmentDao rdvDao ;
     
     @Autowired
-    private RdvService rdvService;
+    private AppointmentService rdvService;
 
     public Optional<User>getUser(final Long  id){
         return usersDao.findById(id);

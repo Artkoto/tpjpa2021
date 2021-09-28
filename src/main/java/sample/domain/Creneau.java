@@ -28,7 +28,7 @@ public class Creneau {
 
     @OneToMany( mappedBy = "creneau", cascade = {CascadeType.ALL})
     @JsonIgnore
-    private Set<Rdv> rdv = new HashSet<>();
+    private Set<Appointment> rdv = new HashSet<>();
 
 
 }

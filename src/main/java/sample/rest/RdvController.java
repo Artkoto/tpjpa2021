@@ -11,29 +11,29 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import sample.domain.Rdv;
-import sample.service.RdvService;
+import sample.domain.Appointment;
+import sample.service.AppointmentService;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
 
 @Controller
-@RequestMapping("/rdv")
+@RequestMapping("/Appointment")
 public class RdvController {
 
 	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
-	private RdvService rdvService;
+	private AppointmentService rdvService;
 	
 	/**
 	 * POST /create  --> Create a new user in the database.
 	 */
-	@PostMapping("/create-rdv")
+	@PostMapping("/create-appointment")
 	@ResponseBody
-	public Rdv create( Rdv rdv) {
+	public Appointment create( Appointment rdv) {
 		
-		rdvService.saveRdv(rdv);
+		rdvService.saveAppointment(rdv);
 		return rdv; 
 	}
 
@@ -44,7 +44,7 @@ public class RdvController {
 	@ResponseBody
 	public void delete(@PathVariable Long rdvId) {
 			
-		rdvService.deleteRdv(rdvId);
+		rdvService.deleteAppointment(rdvId);
 	 
 	}
 
@@ -52,25 +52,23 @@ public class RdvController {
 	   * GET /get-all  --> Return the list of rdvs
 	   *rdvDao
 	   */
-	  @GetMapping("/rdvs")
+	  @GetMapping("/appointments")
 	  @ResponseBody
-	  public Iterable<Rdv> getAllRdv() {
+	  public Iterable<Appointment> getAllRdv() {
 	    
-		return rdvService.getRdvs();
+		return rdvService.getAppointments();
 	    
 	  }
 	  
-
-
 	  /**
 	   * GET /get-all  --> Return the list of appointment
 	   *
 	   */
-	  @GetMapping("/get-rdv/{rdvId}")
+	  @GetMapping("/get-appointment/{rdvId}")
 	  @ResponseBody
-	  public Rdv getById(@PathVariable Long rdvId) {
+	  public Appointment getById(@PathVariable Long rdvId) {
 	    
-		return rdvService.getRdv(rdvId).get();
+		return rdvService.getAppointment(rdvId).get();
 	    
 	  }
 
@@ -81,8 +79,8 @@ public class RdvController {
      */
 	@GetMapping("/get-by-title/{title}")
 	@ResponseBody
-    public Rdv getByTitle(@PathVariable String title)  {
-        return rdvService.getByTitle(title);
+    public Appointment getByTitle(@PathVariable String title)  {
+        return rdvService.getAppointmentByTitle(title);
     }
 	  
 	  /**
@@ -90,11 +88,11 @@ public class RdvController {
 	   * database having the passed id.
 	   */
 
-	  @PutMapping("/update/rdv")
+	  @PutMapping("/update/Appointment")
 	  @ResponseBody
-	  public Rdv updateRdv(Rdv rdv) {
+	  public Appointment updateRdv(Appointment rdv) {
 	
-		rdvService.saveRdv(rdv);
+		rdvService.saveAppointment(rdv);
 		return rdv;
 	  }
 	   

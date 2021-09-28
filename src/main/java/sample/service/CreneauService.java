@@ -15,9 +15,9 @@ public class CreneauService {
     @Autowired
     private CreneauDao creneauDao;
     @Autowired
-    private RdvDao rdvDao;
+    private AppointmentDao rdvDao;
     @Autowired
-    private RdvService rdvService;
+    private AppointmentService rdvService;
 
     public Optional<Creneau> getCreneau(final Long id){
         return creneauDao.findById(id);
@@ -30,8 +30,8 @@ public class CreneauService {
     public void  deleteCreneau(final Long id){
         if (creneauDao.existsById(id)) {
 
-            for (Rdv rdv : rdvDao.getRdvsByCreneauId(id)){
-                rdvService.deleteRdv(rdv.getId());
+            for (Appointment rdv : rdvDao.getRdvsByCreneauId(id)){
+                rdvService.deleteAppointment(rdv.getId());
             }
             creneauDao.deleteById(id);
         }
