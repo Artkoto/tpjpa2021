@@ -30,7 +30,7 @@ public class CreneauService {
     public void  deleteCreneau(final Long id){
         if (creneauDao.existsById(id)) {
 
-            for (Appointment rdv : rdvDao.getRdvsByCreneauId(id)){
+            for (Appointment rdv : rdvDao.findRdvsByCreneauId(id)){
                 rdvService.deleteAppointment(rdv.getId());
             }
             creneauDao.deleteById(id);

@@ -48,7 +48,4 @@ public class AppointmentService {
         return rdv;
     }
 
-
-
-
 }

@@ -40,19 +40,19 @@ public class UserController {
 
     @GetMapping("/get-by-email/{userEmail}")
     @ResponseBody
-    public Iterable<User> getUserByEmail(@PathVariable String userEmail)  {
+    public User getUserByEmail(@PathVariable String userEmail)  {
         return userService.getUsersByEmail(userEmail);
     }
 
 	@GetMapping("/get-by-name/{userName}")
 	@ResponseBody
-    public Iterable<User> getUserByName(@PathVariable String userName)  {
+    public User getUserByName(@PathVariable String userName)  {
         return userService.getUsersByName(userName);
     }
 
 	@GetMapping("/get-by-lastname/{userLastname}")
 	@ResponseBody
-    public Iterable<User> getUserByLastname(@PathVariable String userLastname){
+    public User getUserByLastname(@PathVariable String userLastname){
         return userService.getUsersByLastname(userLastname);
     }
 

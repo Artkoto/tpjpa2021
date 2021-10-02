@@ -1,4 +1,11 @@
 package sample.logTrace;
+/*
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.stereotype.Component;
 
 /*
 import org.aspectj.lang.*;
@@ -11,12 +18,12 @@ import org.springframework.stereotype.Component;
  *  https://gayerie.dev/docs/spring/spring/aop.html
  */
 
-/*@Aspect
-@Component */
+//@Aspect
+//@Component 
 public class Log {
 
 	
-/*	@Pointcut("execution (public * sample.*service*..*(..))")
+	/*@Pointcut("within(execution (public * sample.*service*..*(..))")
 	public void methodCall() {}
 
 	@Before("execution(public * sample..*(..))")
@@ -28,7 +35,6 @@ public class Log {
 	 * @param joinPoint 
 	 * @param exception
 	 */
-
 /*	@AfterThrowing(pointcut = "methodCall()", throwing = "e")
 	public void log(JoinPoint joinPoint, Throwable exception) {
 	  System.out.printf("Retour de %s avec une exception %s%n",

@@ -31,13 +31,13 @@ public class UserService {
             return usersDao.findAll();
     }
 
-    public Iterable<User> getUsersByName(String name)   {
+    public User getUsersByName(String name)   {
         return usersDao.findByName(name);
     }
-    public Iterable<User> getUsersByLastname(String lastname)   {
+    public User getUsersByLastname(String lastname)   {
         return usersDao.findByLastname(lastname);
     }
-    public Iterable<User> getUsersByEmail(String email)   {
+    public User getUsersByEmail(String email)   {
         return usersDao.findByEmail(email);
     }
 
