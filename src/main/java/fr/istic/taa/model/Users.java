@@ -1,4 +1,4 @@
-package model;
+package fr.istic.taa.model;
 
 import lombok.Data;
 
@@ -8,7 +8,7 @@ import java.io.Serializable;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Data
-public abstract class Users implements Serializable {
+public abstract class Users  implements Serializable {
 
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)

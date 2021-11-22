@@ -1,13 +1,11 @@
-package model;
+package fr.istic.taa.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -22,13 +20,11 @@ public class Creneau implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fin ;
 
-    @ManyToMany(mappedBy = "creneaux", cascade = {CascadeType.PERSIST, CascadeType.DETACH})
-    @EqualsAndHashCode.Exclude
+    @ManyToMany(mappedBy = "creneaux")
     @JsonIgnore
-    private Set<Prof> profs = new HashSet<>();
+    private Set<Prof> profs;
 
-    @OneToMany( mappedBy = "creneau", cascade = {CascadeType.ALL})
-    @EqualsAndHashCode.Exclude
+    @OneToMany( mappedBy = "creneau",fetch= FetchType.LAZY, cascade = {CascadeType.ALL})
     @JsonIgnore
-    private Set<Rdv> rdv = new HashSet<>();
+    private Set<Rdv> rdv ;
 }
