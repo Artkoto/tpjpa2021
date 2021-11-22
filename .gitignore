@@ -3,7 +3,8 @@
 #
 # Project specific excludes
 #
-
+.vscode
+./vscode
 tomcat
 
 #
