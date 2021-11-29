@@ -1,0 +1,9 @@
+web:
+  image: nginx
+  volumes:
+   - ./html:/usr/share/nginx/html
+  ports:
+   - "8081:80"
+  environment:
+   - VIRTUAL_HOST=localhost
+   - NGINX_PORT=80
