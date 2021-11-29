@@ -52,9 +52,9 @@ public class SpringTest {
                 user01.setEmail("test1@gmail.com");
 
             Client user02 = new Client();
-                user02.setName("Yao");
-                user02.setLastname("Parfait");
-                user02.setEmail("test2@istic.fr");
+                user02.setName("Barais");
+                user02.setLastname("Olivier");
+                user02.setEmail("client@test.fr");
 
             Prof user03 = new Prof();
                 user03.setName("Konan");
@@ -77,13 +77,35 @@ public class SpringTest {
             Creneau creneau03 = new Creneau();
                 creneau03.setDebut(formater.parse("25-09-2021"));
                 creneau03.setFin(formater.parse("27-09-2021"));
+            Creneau creneau04 = new Creneau();
+                creneau04.setDebut(formater.parse("25-10-2021"));
+                creneau04.setFin(formater.parse("27-10-2021"));
+            Creneau creneau05 = new Creneau();
+                creneau05.setDebut(formater.parse("30-10-2021"));
+                creneau05.setFin(formater.parse("30-10-2021"));
+            Creneau creneau06 = new Creneau();
+                creneau06.setDebut(formater.parse("01-11-2021"));
+                creneau06.setFin(formater.parse("01-11-2021"));
+            Creneau creneau07 = new Creneau();
+                creneau07.setDebut(formater.parse("05-12-2021"));
+                creneau07.setFin(formater.parse("05-12-2021"));
+
+
             user01.setCreneaux(new  HashSet<Creneau>() {{
                 add(creneau01);
                 add(creneau03);
+                add(creneau04);
+                add(creneau05);
+                add(creneau06);
+                add(creneau07);
             }});
             user03.setCreneaux(new HashSet<Creneau>() {{
                 add(creneau02);
                 add(creneau03);
+                add(creneau04);
+                add(creneau05);
+                add(creneau06);
+                add(creneau07);
             }});
 
             //les RDV
@@ -99,20 +121,36 @@ public class SpringTest {
                 rdv02.setClient(user02);
 
 
+
             creneauService.saveCreneau(creneau01);
             creneauService.saveCreneau(creneau02);
             creneauService.saveCreneau(creneau03);
+            creneauService.saveCreneau(creneau04);
+            creneauService.saveCreneau(creneau05);
+            creneauService.saveCreneau(creneau06);
+            creneauService.saveCreneau(creneau07);
             userService.saveUser(user01);
             userService.saveUser(user02);
             userService.saveUser(user03);
             rdvService.saveRdv(rdv01);
             rdvService.saveRdv(rdv02);
 
-
-//            userService.deleteUser(user01.getId());
- //           userService.deleteUser(user02.getId());
-//            userService.deleteUser(user03.getId());
-//            rdvService.deleteRdv(rdv01.getId());
+            for(int i =1 ; i <=100 ; i++){
+                Prof userbot = new Prof();
+                userbot.setName("bot"+i);
+                userbot.setLastname("lastname"+i);
+                userbot.setEmail("bot"+i+"@test.fr");
+                userbot.setCreneaux(new HashSet<Creneau>() {{
+                    add(creneau01);
+                    add(creneau02);
+                    add(creneau03);
+                    add(creneau04);
+                    add(creneau05);
+                    add(creneau06);
+                    add(creneau07);
+                }});
+                userService.saveUser(userbot);
+            }
 
 
              userService.modifyUser(user01.getId(), user04);
@@ -126,7 +164,6 @@ public class SpringTest {
     @Test
     void contextLoads()  throws Exception {
         mockMvc.perform(get("/user/all"))
-                .andExpect(status().isOk()).andExpect(jsonPath("$[1].name", is("Yao")));
+                .andExpect(status().isOk()).andExpect(jsonPath("$[1].name", is("Barais")));
     }
 }
-
