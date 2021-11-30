@@ -348,7 +348,7 @@ Pour Utiliser cette application il vous faut préalablement installé sur votre 
 #### 2) Installation et Lancement de l'application
 
 ###### Pour déployer la `base de données` et projet de `front-end` vous devez suivre les étapes suivantes :
-
+:rotating_light: <span style="color:chocolate">Attention ! S'assurer que les ports `8080` ; `8081` et `3306` ne sont pas déjà utilisés.</span>
 - Décompresser l'archive contenant le front-end et la base de données que vous avez téléchargé à l'étape de
   téléchargement.
 - Dans un `terminal`, se placer dans le repertoire du même nom de l'archive décompressée et lancer la commande
